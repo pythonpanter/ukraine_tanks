@@ -5,6 +5,7 @@ import plotly.graph_objects as go
 # create the dataframe
 # copied in here because of emojis, status 15.03.23
 data = {'Delivery Country': ['🇺🇸', '🇬🇧', '🇩🇰 🇩🇪 🇳🇱', '🇩🇪', '🇵🇱', '🇨🇦', '🇳🇴', '🇪🇸', '🇵🇹', '🇸🇪', '🇫🇮'],
+	'Total': [31, 28, 178, 18, 14, 8, 8, 6, 3, 10, 3],
         'Announced': [31, 24, 100, 18, 14, 8, 8, 6, 3, 10, 3],
         'Potential': [0, 4, 78, 0, 0, 0, 0, 4, 0, 0, 0],
         'Delivered': [0, 0, 0, 0, 14, 0, 0, 0, 0, 0, 0],
@@ -12,8 +13,8 @@ data = {'Delivery Country': ['🇺🇸', '🇬🇧', '🇩🇰 🇩🇪 🇳🇱
 
 df = pd.DataFrame(data)
 
-# sort the dataframe by the 'Announced' column
-df = df.sort_values(by='Announced', ascending=False)
+# sort the dataframe by the 'Total' column
+df = df.sort_values(by='Total', ascending=False)
 
 # Load data from CSV, separator is ";"
 # data = pd.read_csv("data.csv", sep=";")
@@ -70,12 +71,12 @@ st.markdown("""
 
     Comments:
    
-    * The type of tank will be included in the chart in the next update
+    * The type of tank will be included in the chart in the next update.
     * 🇩🇰 🇩🇪 🇳🇱: Coalition announced 100 Leopard 1 until early 2024, up to 178 until end of 2024
     * 🇺🇸: M1 Abrams
     * 🇬🇧: Challenger 2
     * 🇩🇪, 🇵🇱, 🇨🇦, 🇳🇴, 🇪🇸, 🇵🇹, 🇸🇪, 🇫🇮: Leopard 2
-    * 🇸🇪 announced a maximum of 10 Leopard 2, could be less
+    * 🇸🇪: announced a maximum of 10 Leopard 2, could be less
     
     No responsiblity is taken for the correctness and completeness of this information.\n
     Created by Kai Braeunig: [LinkedIn profile - login required](https://www.linkedin.com/in/ai-kai/)
