@@ -5,10 +5,10 @@ import plotly.graph_objects as go
 # create the dataframe
 # copied in here because of emojis, status 15.03.23
 data = {'Delivery Country': ['🇺🇸', '🇬🇧', '🇩🇰 🇩🇪 🇳🇱', '🇩🇪', '🇵🇱', '🇨🇦', '🇳🇴', '🇪🇸', '🇵🇹', '🇸🇪', '🇫🇮'],
-        'Announced': [31, 24, 100, 96, 14, 8, 8, 6, 3, 10, 3],
-        'Potential': [0, 4, 0, 0, 0, 0, 0, 4, 0, 0, 0],
+        'Announced': [31, 24, 100, 18, 14, 8, 8, 6, 3, 10, 3],
+        'Potential': [0, 4, 78, 0, 0, 0, 0, 4, 0, 0, 0],
         'Delivered': [0, 0, 0, 0, 14, 0, 0, 0, 0, 0, 0],
-        'Comment': ['', '', 'DE, DK, NL coalition in sum 100 for 2023', '78 of those as a coalition led by DE, 18 Leopard 2 by DE', '', '', '', '', '', '<=10', '']}
+        'Comment': ['', '', 'DE, DK, NL coalition in sum 80 for 2023, up to 178 until 2024', '', '', '', '', '', '', '<=10', '']}
 
 df = pd.DataFrame(data)
 
@@ -69,9 +69,12 @@ st.markdown("""
     Last Update: 15.03.2023
 
     Comments:
-    
-    * 🇩🇰 🇩🇪 🇳🇱: Coalition announced 100 Leopard 1 in sum for 2023
-    * 🇩🇪: 78 Leopard 1, 18 Leopard 2
+   
+    * The type of tank will be included in the chart in the next update
+    * 🇩🇰 🇩🇪 🇳🇱: Coalition announced 100 Leopard 1 until early 2024, up to 178 until end of 2024
+    * 🇺🇸: M1 Abrams
+    * 🇬🇧: Challenger 2
+    * 🇩🇪, 🇵🇱, 🇨🇦, 🇳🇴, 🇪🇸, 🇵🇹, 🇸🇪, 🇫🇮: Leopard 2
     * 🇸🇪 announced a maximum of 10 Leopard 2, could be less
     
     No responsiblity is taken for the correctness and completeness of this information.\n
@@ -102,4 +105,5 @@ if st.checkbox("Show Sources"):
 * https://www.armyrecognition.com/defense_news_march_2023_global_security_army_industry/germany_and_portugal_to_donate_together_to_ukraine_21_leopard_2a6_tanks.html
 * https://www.reuters.com/world/europe/sweden-send-up-10-leopard-tanks-ukraine-2023-02-24/
 * https://www.reuters.com/world/europe/finland-send-three-leopard-tanks-ukraine-2023-02-23/
+* https://www.welt.de/politik/ausland/article243651059/Ueber-100-Leopard-1-Pistorius-verkuendet-in-Kiew-weitere-Militaerhilfe.html
 """)
