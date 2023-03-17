@@ -4,17 +4,16 @@ import plotly.graph_objects as go
 
 # create the dataframe
 # copied in here because of emojis, status 15.03.23
-data = {'Delivery Country': ['🇺🇸', '🇬🇧', '🇩🇰 🇩🇪 🇳🇱', '🇩🇪', '🇵🇱', '🇨🇦', '🇳🇴', '🇪🇸', '🇵🇹', '🇸🇪', '🇫🇮'],
-	'Total': [31, 28, 178, 18, 28, 8, 8, 10, 3, 10, 3],
-        'Announced': [31, 24, 100, 18, 14, 8, 8, 6, 3, 10, 3],
-        'Potential': [0, 4, 78, 0, 0, 0, 0, 4, 0, 0, 0],
-        'Delivered': [0, 0, 0, 0, 14, 0, 0, 0, 0, 0, 0],
-        'Comment': ['', '', 'DE, DK, NL coalition in sum 80 for 2023, up to 178 until 2024', '', '', '', '', '', '', '<=10', '']}
+data = {'Delivery Country': ['🇩🇰 🇩🇪 🇳🇱', '', '🇺🇸', ' ', '🇬🇧', '  ', '🇵🇱', '🇩🇪', '🇪🇸', '🇸🇪', '🇨🇦', '🇳🇴', '🇵🇹', '🇫🇮'],
+        'Announced': [100, 0, 31, 0, 24, 0, 14, 18, 6, 10, 8, 8, 3, 3],
+        'Potential': [ 78, 0,  0, 0,  4, 0,  0,  0, 4,  0, 0, 0, 0, 0],
+        'Delivered': [  0, 0,  0, 0,  0, 0, 14,  0, 0,  0, 0, 0, 0, 0],
+}
 
 df = pd.DataFrame(data)
 
 # sort the dataframe by the 'Total' column
-df = df.sort_values(by='Total', ascending=False)
+#df = df.sort_values(by='Total', ascending=False)
 
 # Load data from CSV, separator is ";"
 # data = pd.read_csv("data.csv", sep=";")
@@ -31,28 +30,12 @@ colors = {
 fig = go.Figure()
 
 for status in ["Announced", "Potential", "Delivered"]:
-
-    text = []
-    for i, delivery_country in enumerate(data["Delivery Country"]):
-        tanks = ""
-        if delivery_country == "🇩🇰 🇩🇪 🇳🇱":
-            tanks = "Leopard 1"
-        elif delivery_country == "🇺🇸":
-            tanks = "M1 Abrams"
-        elif delivery_country == "🇬🇧":
-            tanks = "Challenger 2"
-        elif delivery_country in ["🇵🇱", "🇩🇪", "🇨🇦", "🇳🇴", "🇪🇸", "🇵🇹", "🇸🇪", "🇫🇮"]:
-            tanks = "Leopard 2"
-        text.append(f"{tanks}<br>({data[status][i]})")
-
     fig.add_trace(
         go.Bar(
             x=data["Delivery Country"],
             y=data[status],
             name=status.title(),
             marker_color=colors[status],
-            text=text,
-            textposition="auto",
         )
     )
 
@@ -63,35 +46,83 @@ fig.update_layout(
     yaxis_title="Number of Tanks",
     legend_title="Status",
     barmode="stack",
-    width=800,  # set width to 800 pixels
+    #width=1200,  # set width to 1000 pixels
 )
 
-# Add subtitle as annotation
-#fig.add_annotation(
-#    text="Last Update: 15.03.2023",
-#    align="center",
-#    showarrow=False,
-#    xref="paper",
-#    yref="paper",
-#    x=0.5,
-#    y=1.08,
-#)
+fig.update_xaxes(range=[-1,14])
+
+fig.update_yaxes(range=[0,220])
+
+plus = 15
+
+fig.add_annotation(
+    x=0,  # x-coordinate of the center of the '🇩🇰 🇩🇪 🇳🇱' bar group
+    y=178 + plus - 3,  # y-coordinate at the top of the bar group
+    text="Leopard 1",
+    showarrow=False,
+    font=dict(size=12),
+    xanchor='center',  # center the annotation horizontally
+    #bgcolor='black',
+    #textangle=-15,
+    #bordercolor='white',
+    xref="x",
+    yref="y",
+)
+
+fig.add_annotation(
+    x=2,  # x-coordinate of the center of the '🇺🇸' bar group
+    y=28 + plus,  # y-coordinate at the top of the bar group
+    text="M1 Abrams",
+    showarrow=False,
+    font=dict(size=12),
+    xanchor='center',  # center the annotation horizontally
+    #bgcolor='black',
+    #textangle=-15,
+    #bordercolor='white',
+)
+
+fig.add_annotation(
+    x=4,  # x-coordinate of the center of the '🇬🇧' bar group
+    y=28 + plus,  # y-coordinate at the top of the bar group
+    text="Challenger 2",
+    showarrow=False,
+    font=dict(size=12),
+    xanchor='center',  # center the annotation horizontally
+    #bgcolor='black',
+    #textangle=-15,
+    #bordercolor='white',
+)
+
+fig.add_annotation(
+    x=19/2,  # x-coordinates of the '🇩🇪', '🇵🇱', '🇨🇦', '🇳🇴', '🇪🇸', '🇵🇹', '🇸🇪', '🇫🇮' bar groups
+    y=28 + plus,  # y-coordinates at the top of the bar groups
+    text="Leopard 2",
+    showarrow=False,
+    font=dict(size=12),
+    xanchor='center',  # center the annotation horizontally
+    #bgcolor='black',
+)
+
+fig.add_shape(
+    type="rect", # shape type
+    x0=5.6, # lower bound of box along x-axis
+    x1=13.4, # upper bound of box along x-axis
+    y0=32, # lower bound of box along y-axis
+    y1=34, # upper bound of box along y-axis
+    fillcolor="white", # box color
+    line_width=0, # border width (set to 0 to remove border)
+)
 
 st.title("Status of Game Changer Tanks for Ukraine")
 
 # Display chart and comments
-st.plotly_chart(fig)
+st.plotly_chart(fig, config={'responsive': True})
 
 st.markdown("""
     Last Update: 15.03.2023
-
     Comments:
    
-    * The type of tank will be included in the chart in the next update.
     * 🇩🇰 🇩🇪 🇳🇱: Coalition announced 100 Leopard 1 until early 2024, up to 178 until end of 2024
-    * 🇺🇸: M1 Abrams
-    * 🇬🇧: Challenger 2
-    * 🇩🇪, 🇵🇱, 🇨🇦, 🇳🇴, 🇪🇸, 🇵🇹, 🇸🇪, 🇫🇮: Leopard 2
     * 🇸🇪: announced a maximum of 10 Leopard 2, could be less
     
     No responsiblity is taken for the correctness and completeness of this information.\n
