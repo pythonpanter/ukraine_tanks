@@ -31,12 +31,28 @@ colors = {
 fig = go.Figure()
 
 for status in ["Announced", "Potential", "Delivered"]:
+
+    text = []
+    for i, delivery_country in enumerate(data["Delivery Country"]):
+        tanks = ""
+        if delivery_country == "🇩🇰 🇩🇪 🇳🇱":
+            tanks = "Leopard 1"
+        elif delivery_country == "🇺🇸":
+            tanks = "M1 Abrams"
+        elif delivery_country == "🇬🇧":
+            tanks = "Challenger 2"
+        elif delivery_country in ["🇵🇱", "🇩🇪", "🇨🇦", "🇳🇴", "🇪🇸", "🇵🇹", "🇸🇪", "🇫🇮"]:
+            tanks = "Leopard 2"
+        text.append(f"{tanks}<br>({data[status][i]})")
+
     fig.add_trace(
         go.Bar(
             x=data["Delivery Country"],
             y=data[status],
             name=status.title(),
             marker_color=colors[status],
+            text=text,
+            textposition="auto",
         )
     )
 
