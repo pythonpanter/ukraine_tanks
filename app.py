@@ -116,7 +116,7 @@ fig.add_shape(
 st.title("Status of Game Changer Tanks for Ukraine")
 
 # Display chart and comments
-st.plotly_chart(fig, config={'responsive': True})
+st.plotly_chart(fig)
 
 st.markdown("""
     Last Update: 15.03.2023
