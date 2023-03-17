@@ -120,6 +120,7 @@ st.plotly_chart(fig, config={'responsive': True})
 
 st.markdown("""
     Last Update: 15.03.2023
+
     Comments:
    
     * 🇩🇰 🇩🇪 🇳🇱: Coalition announced 100 Leopard 1 until early 2024, up to 178 until end of 2024
