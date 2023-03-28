@@ -5,9 +5,9 @@ import plotly.graph_objects as go
 # create the dataframe
 # copied in here because of emojis, status 15.03.23
 data = {'Delivery Country': ['🇩🇰 🇩🇪 🇳🇱', '', '🇺🇸', ' ', '🇬🇧', '  ', '🇩🇪', '🇵🇱', '🇪🇸', '🇸🇪', '🇨🇦', '🇳🇴', '🇵🇹', '🇫🇮'],
+        'Delivered': [  0, 0,  0, 0, 14, 0, 18, 14, 0,  0, 4, 8, 3, 0],
         'Announced': [100, 0, 31, 0, 10, 0,  0,  0, 6, 10, 6, 0, 0, 3],
         'Potential': [ 78, 0,  0, 0,  2, 0,  0,  0, 4,  0, 0, 0, 0, 0],
-        'Delivered': [  0, 0,  0, 0, 14, 0, 18, 14, 0,  0, 4, 8, 3, 0],
 }
 
 df = pd.DataFrame(data)
