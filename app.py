@@ -29,7 +29,7 @@ colors = {
 # Create bar chart
 fig = go.Figure()
 
-for status in ["Announced", "Potential", "Delivered"]:
+for status in ["Delivered", "Announced", "Potential"]:
     fig.add_trace(
         go.Bar(
             x=data["Delivery Country"],
