@@ -119,11 +119,11 @@ st.title("Status of Game Changer Tanks for Ukraine")
 st.plotly_chart(fig)
 
 st.markdown("""
-    Last Update: 28.03.2023
+    Last Update: 15.04.2023
 
     Comments:
    
-    * 🇩🇰 🇩🇪 🇳🇱: Coalition announced 100 Leopard 1 until early 2024, up to 178 until end of 2024
+    * 🇩🇰 🇩🇪 🇳🇱: Coalition announced 100 Leopard 1 from summer 2023 until early 2024, up to 178 until end of 2024
     * 🇸🇪: announced a maximum of 10 Leopard 2, could be less
     
     No responsiblity is taken for the correctness and completeness of this information.\n
