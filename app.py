@@ -49,7 +49,7 @@ fig.update_layout(
     #width=1200,  # set width to 1000 pixels
 )
 
-fig.update_xaxes(range=[-1,14])
+fig.update_xaxes(range=[-1,13])
 
 fig.update_yaxes(range=[0,220])
 
@@ -106,7 +106,7 @@ fig.add_annotation(
 fig.add_shape(
     type="rect", # shape type
     x0=5.6, # lower bound of box along x-axis
-    x1=13.4, # upper bound of box along x-axis
+    x1=12.4, # upper bound of box along x-axis
     y0=32, # lower bound of box along y-axis
     y1=34, # upper bound of box along y-axis
     fillcolor="white", # box color
